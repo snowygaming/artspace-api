@@ -1,0 +1,259 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "ArtSpace API",
+    "description": "API",
+    "version": "0.0.1"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "tags": [
+    {
+      "name": "ART",
+      "description": "art"
+    },
+    {
+      "name": "ARTIST",
+      "description": "Artist"
+    }
+  ],
+  "paths": {
+    "/arts": {
+      "x-swagger-router-controller": "art.controller",
+      "get": {
+        "tags": [
+          "ARTS"
+        ],
+        "description": "list all arts",
+        "operationId": "GET",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ArtResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create an art",
+        "operationId": "POST",
+        "tags": [
+          "ARTS"
+        ],
+        "parameters": [
+          {
+            "name": "art",
+            "in": "body",
+            "description": "art to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewArt"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Art"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/arts/{id}": {
+      "x-swagger-router-controller": "art.controller",
+      "get": {
+        "tags": [
+          "ARTS"
+        ],
+        "description": "Art object",
+        "operationId": "GET_ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of art to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ArtResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a single art based on the ID supplied",
+        "operationId": "PUT_ID",
+        "parameters": [
+          {
+            "name": "art",
+            "in": "body",
+            "description": "art data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewArt"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of art to update",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Art updated"
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a single art based on the ID supplied",
+        "operationId": "DELETE_ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of art to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Art deleted"
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Error": {
+      "required": ["code", "message"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "Success": {
+      "required": ["code", "message"],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "ArtResponse": {
+      "type":"object",
+      "properties":{
+        "metadata": {
+          "$ref": "#/definitions/Metadata"
+        },
+        "results":{
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Art"
+          }
+        }
+      }
+    },
+    "NewArt":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type":"string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Art": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/NewArt"
+        },
+        {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "Metadata": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "number",
+          "format": "integer32"
+        },
+        "limit": {
+          "type": "number",
+          "format": "integer32"
+        }
+      }
+    }
+  }
+}

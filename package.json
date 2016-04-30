@@ -1,0 +1,62 @@
+{
+  "name": "",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start server.js -i 2 --name \"api\" --watch",
+    "status": "pm2 show \"api\"",
+    "reload": "pm2 reload \"api\"",
+    "stop": "pm2 stop \"api\"",
+    "test": "NODE_ENV=TEST mocha",
+    "coverage": "NODE_ENV=TEST istanbul cover -x *.test.js _mocha -- -R spec test/api/controllers/",
+    "lint": "eslint --ext .js api/ lib/ index.js server.js"
+  },
+  "keywords": [
+    "swagger",
+    "mongo",
+    "express",
+    "rest",
+    "service"
+  ],
+  "author": "",
+  "license": "",
+
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-polyfill": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-3": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "bluebird": "^3.3.1",
+    "chai": "^3.2.0",
+    "coveralls": "^2.11.3",
+    "eslint": "^1.10.3",
+    "eslint-config-defaults": "^8.0.2",
+    "istanbul": "^0.3.17",
+    "loadtest": "^1.3.0",
+    "mocha": "^2.2.5",
+    "node-mocks-http": "^1.5.1",
+    "restler": "^3.3.0",
+    "should": "^7.1.0",
+    "supertest": "^1.0.0",
+    "y18n": "^3.2.0"
+  },
+  "dependencies": {
+    "JSONStream": "^1.0.4",
+    "express": "^4.13.2",
+    "express-winston": "^1.2.0",
+    "mongoose": "^4.1.0",
+    "mongoose-paginate": "^5.0.0",
+    "config": "^1.15.0",
+    "nconf": "^0.8.4",
+    "pm2": "^0.14.6",
+    "swagger-tools": "^0.9.0",
+    "swagger2mongoose": "^1.1.0",
+    "winston": "^1.0.1",
+    "winston-mongodb": "^1.3.0"
+  },
+  "engine": "node >= 0.12.1"
+}
