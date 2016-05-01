@@ -172,7 +172,300 @@
           }
         }
       }
+    },
+    "/artists": {
+      "x-swagger-router-controller": "artist.controller",
+      "get": {
+        "tags": [
+          "ARTISTS"
+        ],
+        "description": "list all artists",
+        "operationId": "GET",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ArtistResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create an artist",
+        "operationId": "POST",
+        "tags": [
+          "ARTISTS"
+        ],
+        "parameters": [
+          {
+            "name": "artist",
+            "in": "body",
+            "description": "artist to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewArtist"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Artist"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/artists/{id}": {
+      "x-swagger-router-controller": "artist.controller",
+      "get": {
+        "tags": [
+          "ARTISTS"
+        ],
+        "description": "Artist object",
+        "operationId": "GET_ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of artist to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/ArtistResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a single artist based on the ID supplied",
+        "operationId": "PUT_ID",
+        "parameters": [
+          {
+            "name": "artist",
+            "in": "body",
+            "description": "art data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewArtist"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of artist to update",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Artist updated"
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a single artist based on the ID supplied",
+        "operationId": "DELETE_ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of artist to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Artist deleted"
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/spaces": {
+      "x-swagger-router-controller": "space.controller",
+      "get": {
+        "tags": [
+          "SPACES"
+        ],
+        "description": "list all spaces",
+        "operationId": "GET",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SpaceResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Create a Space",
+        "operationId": "POST",
+        "tags": [
+          "SPACE"
+        ],
+        "parameters": [
+          {
+            "name": "Spacce",
+            "in": "body",
+            "description": "Space to add",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewSpace"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Space"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/spaces/{id}": {
+      "x-swagger-router-controller": "space.controller",
+      "get": {
+        "tags": [
+          "SPACES"
+        ],
+        "description": "Space object",
+        "operationId": "GET_ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of Space to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SpaceResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a single Space based on the ID supplied",
+        "operationId": "PUT_ID",
+        "parameters": [
+          {
+            "name": "space",
+            "in": "body",
+            "description": "space data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewSpace"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of space to update",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Space updated"
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletes a single space based on the ID supplied",
+        "operationId": "DELETE_ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of space to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Space deleted"
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
     }
+
   },
   "definitions": {
     "Error": {
@@ -229,6 +522,92 @@
       "allOf": [
         {
           "$ref": "#/definitions/NewArt"
+        },
+        {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "ArtistResponse": {
+      "type":"object",
+      "properties":{
+        "metadata": {
+          "$ref": "#/definitions/Metadata"
+        },
+        "results":{
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Artist"
+          }
+        }
+      }
+    },
+    "NewArtist":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type":"string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Artist": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/NewArtist"
+        },
+        {
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "SpaceResponse": {
+      "type":"object",
+      "properties":{
+        "metadata": {
+          "$ref": "#/definitions/Metadata"
+        },
+        "results":{
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Space"
+          }
+        }
+      }
+    },
+    "NewSpace":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type":"string"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "Space": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/NewSpace"
         },
         {
           "required": [
