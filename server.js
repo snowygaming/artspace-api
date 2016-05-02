@@ -14,13 +14,13 @@ var log = require('./lib/logger');
 
 
 //Establish database connection
-require('./bootstrap/mongoose')(mongoose);
+require('./config/mongoose')(mongoose);
 
 //Establish swagger settings
-require('./bootstrap/swagger')(app);
+require('./config/swagger')(app);
 
 //Establish app settings
-require('./bootstrap/app')(app);
+require('./config/app')(app);
 
 var server = app.listen(PORT);
 

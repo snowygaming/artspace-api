@@ -24,6 +24,10 @@
     {
       "name": "ARTIST",
       "description": "Artist"
+    },
+    {
+      "name": "SPACE",
+      "description": "Space"
     }
   ],
   "paths": {
@@ -51,11 +55,11 @@
         }
       },
       "post": {
-        "description": "Create an art",
-        "operationId": "POST",
         "tags": [
           "ARTS"
         ],
+        "description": "Create an art",
+        "operationId": "POST",
         "parameters": [
           {
             "name": "art",
@@ -116,6 +120,9 @@
         }
       },
       "put": {
+        "tags": [
+          "ARTS"
+        ],
         "summary": "Update a single art based on the ID supplied",
         "operationId": "PUT_ID",
         "parameters": [
@@ -149,6 +156,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "ARTS"
+        ],
         "summary": "Deletes a single art based on the ID supplied",
         "operationId": "DELETE_ID",
         "parameters": [
@@ -197,11 +207,11 @@
         }
       },
       "post": {
-        "description": "Create an artist",
-        "operationId": "POST",
         "tags": [
           "ARTISTS"
         ],
+        "description": "Create an artist",
+        "operationId": "POST",
         "parameters": [
           {
             "name": "artist",
@@ -262,6 +272,9 @@
         }
       },
       "put": {
+        "tags": [
+          "ARTISTS"
+        ],
         "summary": "Update a single artist based on the ID supplied",
         "operationId": "PUT_ID",
         "parameters": [
@@ -295,6 +308,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "ARTISTS"
+        ],
         "summary": "Deletes a single artist based on the ID supplied",
         "operationId": "DELETE_ID",
         "parameters": [
@@ -343,11 +359,11 @@
         }
       },
       "post": {
+        "tags": [
+          "SPACES"
+        ],
         "description": "Create a Space",
         "operationId": "POST",
-        "tags": [
-          "SPACE"
-        ],
         "parameters": [
           {
             "name": "Spacce",
@@ -408,6 +424,9 @@
         }
       },
       "put": {
+        "tags": [
+          "SPACES"
+        ],
         "summary": "Update a single Space based on the ID supplied",
         "operationId": "PUT_ID",
         "parameters": [
@@ -441,6 +460,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "SPACES"
+        ],
         "summary": "Deletes a single space based on the ID supplied",
         "operationId": "DELETE_ID",
         "parameters": [
